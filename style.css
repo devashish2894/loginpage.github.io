@@ -1,0 +1,11 @@
+*{margin:0;padding: 0;box-sizing: border-box;}
+.contain{width: 300px;height:462px;background-color: rgb(27, 27, 27);padding-top: 5px;border-radius: 30px;opacity: 0.8;color: rgb(252, 252, 252);position: absolute;position: absolute;top:50%;left:50%;transform: translate(-50% ,-50%);display: none;z-index: 1;}
+.contain h1{margin:20px auto;text-align: center;}
+.bod{margin-left: 50px;margin-top: 30px;}
+.bod h4{margin-bottom: -19px;}
+.bar{width: 180px;border-radius: 20px;height: 24px;}
+.butto{margin: 10px 3px;height: 27px;width: 181px;border-radius: 25px;color: white;background-color: rgb(48, 177, 9);}
+.button1{height:33px;width: 137px;border:2px solid rgb(249, 255, 171);border-radius: 25px;background: rgb(255, 255, 6);position: absolute;top:50%;left:50%;transform: translate(-50% ,-50%);color: rgb(0, 0, 0) ;z-index: 11;}
+#closebtn{float: right;margin-right:17px;cursor: pointer;}
+.mb{width: 100%;height: 100vh;}
+.back img{height: 100vh;width: 100%;}

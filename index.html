@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>functional form</title>
+</head>
+<body>
+    <section class="mb">
+        <div class="back">
+            <img src="1.jpg" id="blurr">
+        <button class='button1'id='sign'>
+            signIn
+
+        </button>
+        <div class="contain"id='popup'>
+            <div id="close"><span id='closebtn'><i class="fas fa-times-circle"></i></span></div>
+            <h1>sign up</h1>
+            <form class="bod">
+            <label>username:</label><br>
+            <input type="text" name="user" id="username" class="bar">
+            <h4 id="inneruser"></h4>
+            <br><br>
+
+            <label>password:</label><br>
+            <input type="password" name="pass" id="password" class="bar">
+            <h4 id="innerpass"></h4>
+            <br><br>
+            <label>confirm password:</label><br>
+            <input type="password" name="pass" id="conpassword" class="bar">
+            <h4 id="innercon"></h4>
+            <br><br>
+            <label>email:</label><br>
+            <input type="text" name="ema" id="email" class="bar">
+            <h4 id="inneremail"></h4>
+            <br> <br>
+
+            <button class="butto" id="submit_btn">sign up</button>
+
+
+
+            
+        </form>
+
+        </div>
+    </div>
+    </section>
+
+
+
+    <script>
+           $(document).ready(function(){
+
+               $('#sign').click(function(){
+                   $('#popup').show();
+                   $('#blurr').css("filter","blur(5px)")
+                   $('#sign').hide();
+
+               })
+               //closing
+               $('#closebtn').click(function(){
+                $('#popup').hide();
+                $('#sign').show();
+                $('#blurr').css("filter","blur(0)")
+               })
+                   
+               
+
+
+
+               $('#inneruser').hide()
+               $('#innerpass').hide()
+               $('#innercon').hide()
+               $('#inneremail').hide()
+
+               var user_err=true;
+               var pass_err=true;
+               var conpass_err=true;
+               var email_err=true;
+
+               $('#username').keyup(function(){
+                   checkusername();
+               });
+
+               function checkusername(){
+                   var user_val=$('#username').val();
+
+                   if(user_val.length ==''){
+                       $('#inneruser').show();
+                       $('#inneruser').html("please fill username");
+                       $('#inneruser').focus();
+                       $('#inneruser').css("color","green")
+                       user_err=false;
+                       return false;
+                   }
+                   else{
+                   $('#inneruser').hide()
+               }
+            
+
+
+               if((user_val.length <3)||(user_val.length >10)){
+                       $('#inneruser').show();
+                       $('#inneruser').html("characters should be more than 3,less than 10");
+                       $('#inneruser').focus();
+                       $('#inneruser').css("color","green")
+                       user_err=false;
+                       return false;
+                   }
+                   else{
+                   $('#inneruser').hide();
+               }
+            }
+
+            $('#password').keyup(function(){
+                checkpassword();
+
+            });
+
+            function checkpassword(){
+                var user_pass=$('#password').val();
+
+                if(user_pass.length ==''){
+                       $('#innerpass').show();
+                       $('#innerpass').html("please provide password");
+                       $('#innerpass').focus();
+                       $('#innerpass').css("color","green")
+                       pass_err=false;
+                       return false;
+                   }
+                   else{
+                   $('#innerpass').hide()
+               }
+
+               if(user_pass.length <8){
+                       $('#innerpass').show();
+                       $('#innerpass').html("please provide minimum 8characters");
+                       $('#innerpass').focus();
+                       $('#innerpass').css("color","green")
+                       pass_err=false;
+                       return false;
+                   }
+                   else{
+                   $('#innerpass').hide()
+               }
+
+               
+            }
+
+            $('#conpassword').keyup(function(){
+                checkconpassword();
+            });
+
+            function checkconpassword(){
+                var user_con=$('#conpassword').val();
+                var user_pass=$('#password').val();
+
+
+
+                if(user_con!=user_pass){
+                    $('#innercon').show();
+                       $('#innercon').html("password dosnt match");
+                       $('#innercon').focus();
+                       $('#innercon').css("color","green")
+                       conpass_err=false;
+                       return false;
+
+                     }
+                     else{
+                           $('#innercon').hide()
+                     }
+
+            }
+
+            $("#email").keyup(function(){
+                checkemail();
+            });
+
+            function checkemail(){
+                var emai=$("#email").val();
+
+
+
+
+                 if(emai.length==''){
+
+                       $('#inneremail').show();
+                       $('#inneremail').html("please provide email");
+                       $('#inneremail').focus();
+                       $('#inneremail').css("color","green")
+                       email_err=false;
+                       return false;
+
+                }
+                else{   $('#inneremail').hide()
+                         }
+
+
+                if(emai.charAt(emai.length-4)!="."){
+
+                       $('#inneremail').show();
+                       $('#inneremail').html("ivalid position.");
+                       $('#inneremail').focus();
+                       $('#inneremail').css("color","green")
+                       email_err=false;
+                       return false;
+
+                }
+                else{   $('#inneremail').hide()
+                         }
+                        }
+
+                      $('#submit_btn').click(function(){
+
+                         user_err=true;
+                         pass_err=true;
+                         conpass_err=true;
+                         email_err=true;
+
+                         checkusername();
+                         checkpassword();
+                         checkconpassword();
+                         checkemail();
+
+                         if(( user_err==true) &&(pass_err==true) && (conpass_err==true)&&(email_err==true)){
+                             return true;
+
+                         } 
+                         else{
+                             return false;
+                            }
+
+
+
+
+                      }) ;  
+
+
+            
+
+
+           });
+    </script>
+    
+</body>
+</html>
